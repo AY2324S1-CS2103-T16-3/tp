@@ -22,6 +22,7 @@ import unicash.logic.commands.HelpCommand;
 import unicash.logic.commands.ListCommand;
 import unicash.logic.commands.ResetCommand;
 import unicash.logic.commands.SummaryCommand;
+import unicash.logic.commands.TestCommand;
 import unicash.logic.parser.exceptions.ParseException;
 
 
@@ -96,6 +97,9 @@ public class UniCashParser {
 
         case SummaryCommand.COMMAND_WORD:
             return new SummaryCommand();
+
+        case TestCommand.COMMAND_WORD:
+            return new TestCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
