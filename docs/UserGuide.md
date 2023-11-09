@@ -105,7 +105,7 @@ Note that each command might use the prefixes slightly differently so refer to e
 | `n/`<br><br>(Transaction name)                                         | At least 1 character but no more than 500 characters.<br><br>Only supports alphanumeric characters, spaces, (, ), _, @, -, #, &, ., and , characters. | Blank names are not allowed.                                                                                                                                                                             | `n/Hi (John)`                                                                     | `n/`<br>`n/Two ^`                                     |
 | `type/`<br><br>(Type of transaction)                                   | Only supported values are `expense` and `income`.                                                                                                     | Case-sensitive, any other values, including blank values (i.e. `type/`), will be rejected.                                                                                                               | `type/expense`<br>`type/income`                                                   | `type/`<br>`type/EXPENSE`<br>`type/hi`                |
 | `amt/`<sup>1</sup><br><br>(Monetary amount of budget and transactions) | Values must be `>= 0.00` and `<= 2,147,483,647`.                                                                                                      | Supported inputs allow an optional leading `$` character and all amount values are rounded to the nearest 2 decimal places so `$0.001` will be treated as `$0.00`.                                       | `amt/0`<br>`amt/$10.09`<br>`amt/$0.00`                                            | `amt/`<br>`amt/-100`<br>`amt/hi`<br>`amt/%0.00`       |
-| `dt/`<br><br>(Date & time of transaction)                              | Only supported formats are: `dd-MM-yyyy HH:mm`, `yyyy-MM-dd HH:mm`, and `dd MMM yyyy HH:mm`                                                           | If no value is provided, i.e. `dt/`, then it defaults to the current date time the command is run on with timezone of Singapore (GMT+8).                                                                 | `dt/`<br>`dt/15-02-2023 14:30`<br>`dt/2023-02-15 14:30`<br>`dt/15 Feb 2023 14:30` | `dt/15 August 2023`<br>`dt/ 14:30`<br>`dt/15-11-2023` |
+| `dt/`<br><br>(Date & time of transaction)                              | Only supported formats are: `dd-MM-yyyy HH:mm`, `yyyy-MM-dd HH:mm`, and `dd MMM yyyy HH:mm`                                                           | If no value is provided, i.e. `dt/`, then it defaults to the current date time when the command is run, using the same date time as the user's system clock.                                             | `dt/`<br>`dt/15-02-2023 14:30`<br>`dt/2023-02-15 14:30`<br>`dt/15 Feb 2023 14:30` | `dt/15 August 2023`<br>`dt/ 14:30`<br>`dt/15-11-2023` |
 | `l/`<br><br>(Location of transaction)                                  | At least 1 character but no more than 500 characters.<br><br>Only supports alphanumeric characters, spaces, (, ), _, @, -, #, &, ., and , characters. | Blank locations are not allowed.<br><br>Omit this prefix entirely to indicate that there is no location, `l/` alone is not permitted (blank location).                                                   | `l/NTUC @ UTown`                                                                  | `l/`<br>`l/Two ^`                                     |
 | `c/`<br><br>(Category of transaction)                                  | At least 1 character but no more than 15 characters.<br><br>Only supports alphanumeric characters.                                                    | Blank categories are not allowed.<br><br>Omit this prefix entirely to indicate that there is no category, `c/` alone is not permitted (blank category).<br><br>Categories are always saved in lowercase. | `c/Hi`<br>`c/JustExactly15Ch`                                                     | `c/`<br>`c/Over15Characters`<br>`c/#books`            |
 | `month/`<br><br>(Month that transaction was performed)                 | Values must be `>= 1` and `<= 12`                                                                                                                     | Assumes January corresponds to `1`, February to `2` and so on.                                                                                                                                           | `month/1`<br>`month/10`<br>`month/12`                                             | `month/`<br>`month/0`<br>`month/-10`<br>`month/15`    | 
@@ -282,32 +282,22 @@ Adds a new `Transaction` to UniCa$h.
 
 Command: `add_transaction n/NAME type/TYPE amt/AMOUNT [dt/DATETIME] [l/LOCATION] [c/CATEGORY]`
 
+<div class="callout callout-info" markdown="span" style="margin-bottom: 20px;">
+For more information about the prefix constraints, refer to the [command breakdown's prefix types section](#prefix-types)
+</div>
+
 Command Words Accepted: `add_transaction`, `add`, `at` (case-insensitive)
 
-Command Options:
-
-| Option Name | Optional? | Purpose                                                                                       |
-|-------------|-----------|-----------------------------------------------------------------------------------------------|
-| n/          | No        | Name of the transaction.                                                                      |
-| type/       | No        | Transaction type of transaction.<br/>Valid types are `income` and `expense`.                  |
-| amt/        | No        | Monetary amount of transaction. Has to be a positive value.                                   |
-| dt/         | Yes       | Date and time where transaction was made.<br/>Defaults to current date time if not specified. |
-| l/          | Yes       | Location where transaction was made.<br/>Defaults to `''` if not specified.                   |
-| c/          | Yes       | Category tagged to that transaction.<br/>No categories tagged if not specified.               |
-
-Important notes:
-
-1. There is a character limit for `Name` and `Location` set at up to 500 characters.
-2. `Amount` entered has to be positive for both `income` and `expense`.
-3. `Amount` is automatically rounded to 2 decimal places.
-4. `UniqueCategoryList` enforces a unique (case-insensitive) constraint on `Category` it stores.
-5. `UniqueCategoryList` enforces a max size of 5 `Category`
-6. There is a character limit for `Category` set at up to 15 characters/
-7. There is a limit of 100,000 transactions you can add to UniCa$h.
+<div class="callout callout-important" markdown="span" style="margin-bottom: 20px;">
+**Added Constraints**
+<br><br>
+There is a limit of 5 `Category` that can be added to a `Transaction`. <br/>
+There is a limit of 100,000 transactions you can add to UniCa$h.
+</div>
 
 ##### Successful Execution
 
-###### Example 1
+**Example 1**
 
 > **Case**: Add transaction with name, amount, type, datetime, location and a category.
 >
@@ -325,7 +315,7 @@ Important notes:
 > Categories: #household
 > ```
 
-###### Example 2
+**Example 2**
 
 > **Case**: Add transaction with name, amount and type.
 >
@@ -345,7 +335,7 @@ Important notes:
 
 ##### Failed Execution
 
-###### Example 1
+**Example 1**
 
 > **Case**: Missing compulsory fields.
 >
@@ -362,7 +352,7 @@ Important notes:
 > Example: add_transaction n/Buying groceries type/expense amt/300 dt/18-08-2023 19:30 l/ntuc c/household
 > ```
 
-###### Example 2
+**Example 2**
 
 > **Case**: Duplicate categories with valid compulsory fields.
 >
@@ -373,19 +363,18 @@ Important notes:
 > All categories must be case-insensitively unique, duplicate categories are not allowed.
 > ```
 
-###### Example 3
+**Example 3**
 
 > **Case**: More than 5 categories with valid compulsory fields.
 >
-> **Input
-**: `add_transaction n/Buying groceries type/expense amt/300 c/household c/entertainment c/education c/fun c/school c/test`
+> **Input**: `add_transaction n/Buying groceries type/expense amt/300 c/household c/entertainment c/education c/fun c/school c/test`
 >
 > **Output**:
 > ```
 > There should only be a maximum of 5 unique categories.
 > ```
 
-###### Example 4
+**Example 4**
 
 > **Case**: More than 100,000 transactions added.
 >
@@ -1361,11 +1350,13 @@ Command Argument: `COMMAND_WORD` is the command to get help for. If no
 argument is specified, a general help message is shown as well as a pop up
 containing a link to our User Guide.
 
-> To get a list of `COMMAND_WORD`, do `help` with no arguments
+<div class="callout callout-info" markdown="span" style="margin-bottom: 20px;">
+To get a list of `COMMAND_WORD`, do `help` with no arguments
+</div>
 
 ##### Successful Execution
 
-###### Example 1
+**Example 1**
 
 > **Case**: Get general help.
 >
@@ -1398,10 +1389,9 @@ containing a link to our User Guide.
 > ```
 >
 > The following output is shown as well as the popup.
-> <img src="images/unicash/HelpSuccess1.png" width="1000" />
 > <img src="images/unicash/HelpPopup.png" width="1000" />
 
-###### Example 2
+**Example 2**
 
 > **Case**: Get general for a specific command.
 >
@@ -1418,7 +1408,7 @@ containing a link to our User Guide.
 
 ##### Failed Execution
 
-##### Example 1
+**Example 1**
 
 > **Case**: Get help for an unknown command.
 >
