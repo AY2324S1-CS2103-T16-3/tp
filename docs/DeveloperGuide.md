@@ -1208,7 +1208,7 @@ Expected output: The summary statistics window pops up and displays the summary 
 
 ### Budget
 #### Set your budget
-Use `set_budget amt/<amount> interval/<interval>`
+Use `set_budget amt/300 interval/day`
 
 Expected output: Budget is set and a success message is displayed.
 
@@ -1232,7 +1232,7 @@ Use `help`
 
 Expected output: The help window pops up and displays the link to the User Guide. Message with all commands is displayed on the right panel.
 
-Use `help <command word>`
+Use `help <command word>` (e.g. `help add_transaction`)
 
 Expected output: The help window pops up and displays the usage for the specified command.
 #### Exit
