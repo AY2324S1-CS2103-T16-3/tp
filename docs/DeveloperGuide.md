@@ -1143,6 +1143,103 @@ For the following Use Cases (unless specified otherwise):
    - 3a1. UniCa$h displays a prompt to create a budget first.
    - Use case ends.
 
+
+---
+## Instructions for manual testing
+### Launch and shutdown
+#### Initial launch
+1. Download the jar file (`unicash.jar`) and copy it into an empty folder
+2. Open a terminal and navigate to the folder
+3. Run `java --version`, ensure that you are running on Java 11. If not, download and install Java 11. 
+4. Run `java -jar unicash.jar`
+   * Expected output: A GUI window should appear with the title "UniCa$h", with a set of sample transactions.
+
+### Transactions
+#### Adding a transaction
+Use `add n/Buying groceries type/expense amt/300 dt/18-08-2023 19:30 l/NTUC c/Food`
+
+Expected output: Transaction is added and a success message is displayed.
+
+#### Deleting a transaction
+Use `delete 1`
+
+Expected output: Transaction is deleted and a success message is displayed.
+
+#### Editing a transaction
+Use `edit 1 n/Buying groceries type/expense amt/300 dt/18-08-2023 19:30 l/NTUC c/Food`
+
+Expected output: Transaction is edited and a success message is displayed.
+
+#### Listing all transactions
+Use `list`
+
+Expected output: All transactions are displayed.
+
+#### Finding transaction(s)
+Use `find n/Buying groceries l/NTUC c/Food`
+
+Expected output: All transactions that match the specified filters are displayed.
+
+#### Get a transaction
+Prerequisite: There is at least 1 transaction stored in UniCa$h.
+
+Use `get 1`
+
+Expected output: The retrieved transaction is displayed.
+
+#### Clear all transactions
+Use `clear_transactions`
+
+Expected output: All transactions are cleared and a success message is displayed.
+
+### Expenditure
+#### Get total expenditure
+Prerequisite: There is at least 1 transaction of category expense stored in UniCa$h.
+
+Use `get_total_expenditure month/10 c/Food year/2006`
+
+Expected output: The total expenditure is displayed.
+
+### Statistics
+#### Summary statistics
+Use `summary`
+
+Expected output: The summary statistics window pops up and displays the summary statistics.
+
+### Budget
+#### Set your budget
+Use `set_budget amt/<amount> interval/<interval>`
+
+Expected output: Budget is set and a success message is displayed.
+
+#### Get your budget
+Use `get_budget`
+
+Expected output: Budget is displayed.
+
+#### Clear your budget
+Use `clear_budget`
+
+Expected output: Budget is cleared and a success message is displayed.
+
+### Utility
+#### Reset
+Use `reset_unicash`
+
+Expected output: UniCa$h resets to default state and restores the sample transactions.
+#### Help
+Use `help`
+
+Expected output: The help window pops up and displays the link to the User Guide. Message with all commands is displayed on the right panel.
+
+Use `help <command word>`
+
+Expected output: The help window pops up and displays the usage for the specified command.
+#### Exit
+Use `exit`
+
+Expected: UniCa$h closes.
+
 ---
 ## Appendix
 ### Appendix A: Planned Enhancements
