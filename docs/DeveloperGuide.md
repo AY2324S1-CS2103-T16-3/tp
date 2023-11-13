@@ -916,6 +916,12 @@ Low (unlikely to have) - `*`
 | `* *`    | tech-savvy NUS student | see usage instructions for a command                                | refer to instructions when I forget how to the command                                               |
 | `* * *`  | tech-savvy NUS student | reset the application                                               | restore it to the original state                                                                     |
 | `* * *`  | tech-savvy NUS student | exit the application                                                | close the application                                                                                |
+| `*`      | tech-savvy NUS student | import my transaction data from a spreadsheet to the app            | input all my historical expenses without having to manually input them one at a time                 |
+| `*`      | tech-savvy NUS student | export my transaction data to a spreadsheet                         | backup my transaction data                                                                           |
+| `*`      | tech-savvy NUS student | fix a ratio to be set aside from my excess funds every month        | still have a portion of my savings even when I make big purchases                                    |
+| `*`      | tech-savvy NUS student | add transactions that are due on a recurring basis                  | include recurring expenditures without having to manually input them every time they occur           |
+| `*`      | tech-savvy NUS student | receive autofill recommendations based on my historical inputs      | save time typing the full command and reduce the chance of making a mistake                          |
+
 
 
 ### Use Cases
