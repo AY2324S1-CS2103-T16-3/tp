@@ -887,13 +887,13 @@ This command will exit UniCa$h.
 
 ### User Stories
 
-```info
+<div class="callout callout-info" markdown="span" style="margin-bottom: 20px;">
 Priorities for user stories are marked as follows:
 
 High (must have) - `* * *`
 Medium (nice to have) - `* *`
 Low (unlikely to have) - `*`
-```
+</div>
 
 | Priority | As a …​                | I want to …​                                                        | So that I can…​                                                                                      |
 |----------|------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
