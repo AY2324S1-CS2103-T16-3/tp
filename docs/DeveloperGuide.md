@@ -888,10 +888,9 @@ This command will exit UniCa$h.
 ### User Stories
 
 <div class="callout callout-info" markdown="span" style="margin-bottom: 20px;">
-Priorities for user stories are marked as follows:
-
-High (must have) - `* * *`
-Medium (nice to have) - `* *`
+Priorities for user stories are marked as follows: <br>
+High (must have) - `* * *` <br>
+Medium (nice to have) - `* *` <br>
 Low (unlikely to have) - `*`
 </div>
 
@@ -904,7 +903,7 @@ Low (unlikely to have) - `*`
 | `* * *`  | tech-savvy NUS student | edit transactions that have been created                            | rectify incorrect inputs in my transactions                                                          |
 | `* * *`  | tech-savvy NUS student | view my total expenditure                                           | see at a glance how much I have spent in total without having to manually tabulate                   |
 | `* * *`  | tech-savvy NUS student | find transaction(s) by name, location and/or category               | locate specific transactions and its associated details without having to go through the entire list |
-| `* * *`  | tech-savvy NUS student | view my total expenditure by month and filter by category           | check my expenditure in specific areas without having to manually tabulate                           |
+| `* * *`  | tech-savvy NUS student | view my total expenditure by month/year and filter by category      | check my expenditure in specific areas without having to manually tabulate                           |
 | `* * *`  | tech-savvy NUS student | clear all my transactions                                           | start afresh with no transaction history                                                             |
 | `* *`    | tech-savvy NUS student | set a daily/weekly/monthly budget                                   | spend within my limits                                                                               |
 | `* *`    | tech-savvy NUS student | check the budget that I set                                         | the spending limit I set for myself                                                                  |
@@ -1139,7 +1138,8 @@ For the following Use Cases (unless specified otherwise):
    - Use case ends.
 
 ---
-### Appendix: Planned Enhancements
+## Appendix
+### Appendix A: Planned Enhancements
 
 - The current `get_budget` command does not alter the transaction list when processing the expenses within the interval. This can lead to confusion as users may not be aware of the specific transactions that are being included in the calculation of the budget remainder, and as a result, mistaking the budget calculation as not working. 
  
@@ -1152,7 +1152,7 @@ For the following Use Cases (unless specified otherwise):
 - Expand summary window to incomes as well
 - Batch deletion/clear (by day, by month, etc)
 
-### Appendix: Potential Features
+### Appendix B: Potential Features
 
 Every user can...
 
@@ -1162,7 +1162,7 @@ Every user can...
 - Support more than one global budget to allow users to set budgets for each category or different budgets for day/week/month
 - Support more types of transaction such as `transfer`
 
-### Appendix: Effort
+### Appendix C: Effort
 
 <div class="callout callout-info" markdown="span" style="margin-bottom: 20px;">
 UniCa$h is based off of AB3's original architecture, leveraging the existing command handling framework and UI classes.
